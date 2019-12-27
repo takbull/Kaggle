@@ -41,6 +41,7 @@ def fit_predict(xs, y_train) -> np.ndarray:
     with tf.Session(graph=tf.Graph(), config=config) as sess, timer('fit_predict'):
         ks.backend.set_session(sess)
         model_in = ks.Input(shape=(X_train.shape[1],), dtype='float32', sparse=True)
+        #only 4 layer. 
         out = ks.layers.Dense(192, activation='relu')(model_in)
         out = ks.layers.Dense(64, activation='relu')(out)
         out = ks.layers.Dense(64, activation='relu')(out)
